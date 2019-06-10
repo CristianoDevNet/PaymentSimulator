@@ -33,6 +33,16 @@ namespace simulator_back_end.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("SimCabs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Data = "10/06/2019",
+                            Juros = 4.12m,
+                            Titulo = "Fiat Uno Vivace",
+                            UsuarioId = 1
+                        });
                 });
 
             modelBuilder.Entity("simulator_back_end.Models.SimDet", b =>
@@ -51,6 +61,29 @@ namespace simulator_back_end.Migrations
                     b.HasIndex("SimCabId");
 
                     b.ToTable("SimDets");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Parcela = 1,
+                            SimCabId = 1,
+                            Valor = 8234.12m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Parcela = 2,
+                            SimCabId = 1,
+                            Valor = 8234.12m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Parcela = 3,
+                            SimCabId = 1,
+                            Valor = 8234.12m
+                        });
                 });
 
             modelBuilder.Entity("simulator_back_end.Models.Usuario", b =>
@@ -67,6 +100,14 @@ namespace simulator_back_end.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "abc@abc.com",
+                            Senha = "123"
+                        });
                 });
 
             modelBuilder.Entity("simulator_back_end.Models.SimCab", b =>

@@ -8,7 +8,7 @@ using simulator_back_end.Data;
 namespace simulator_back_end.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190610135747_FirstMigrations")]
+    [Migration("20190610142539_FirstMigrations")]
     partial class FirstMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
