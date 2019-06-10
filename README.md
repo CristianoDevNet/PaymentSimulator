@@ -1,4 +1,4 @@
-# simulator_front_end
+# simulator_front/back_end
 
 ## Project setup
 ```
