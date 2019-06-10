@@ -1,0 +1,14 @@
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\bin\Debug\netcoreapp2.2\simulator_back_end.deps.json
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\bin\Debug\netcoreapp2.2\simulator_back_end.runtimeconfig.json
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\bin\Debug\netcoreapp2.2\simulator_back_end.runtimeconfig.dev.json
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\bin\Debug\netcoreapp2.2\simulator_back_end.dll
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\bin\Debug\netcoreapp2.2\simulator_back_end.pdb
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\obj\Debug\netcoreapp2.2\simulator_back_end.csprojAssemblyReference.cache
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\obj\Debug\netcoreapp2.2\simulator_back_end.csproj.CoreCompileInputs.cache
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\obj\Debug\netcoreapp2.2\simulator_back_end.RazorAssemblyInfo.cache
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\obj\Debug\netcoreapp2.2\simulator_back_end.RazorAssemblyInfo.cs
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\obj\Debug\netcoreapp2.2\simulator_back_end.AssemblyInfoInputs.cache
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\obj\Debug\netcoreapp2.2\simulator_back_end.AssemblyInfo.cs
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\obj\Debug\netcoreapp2.2\simulator_back_end.RazorTargetAssemblyInfo.cache
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\obj\Debug\netcoreapp2.2\simulator_back_end.dll
+C:\Users\crist\Desktop\PaymentSimulator\simulator_back_end\obj\Debug\netcoreapp2.2\simulator_back_end.pdb
