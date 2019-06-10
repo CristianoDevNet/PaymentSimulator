@@ -10,7 +10,26 @@
 
     <b-row class="justify-content-md-center">
       <b-col col lg="5">
-        <b-row>Esquerda</b-row>
+        <b-row>
+          <b-container>
+            <hr>
+            <p>
+              <input type="text" placeholder="Título" class="form-control" v-model="titulo">
+            </p>
+            <p>
+              <input type="text" placeholder="Valor Total" class="form-control" v-model="valor_total">
+            </p>
+            <p>
+              <input type="text" placeholder="Qtd. Parcelas" class="form-control" v-model="qtd_parcelas">
+            </p>
+            <p>
+              <input type="text" placeholder="Juros" class="form-control" v-model="juros">
+            </p>
+            <p>
+              <button @click="simular()" class="btn btn-primary">Simular</button>
+            </p>
+          </b-container>
+        </b-row>
       </b-col>
       <b-col col lg="5">
         <b-row>
@@ -52,7 +71,6 @@
               <!---->
             </tbody>
           </table>
-
         </b-row>
       </b-col>
     </b-row>
@@ -61,7 +79,30 @@
 
 <script>
 export default {
-  name: "PaymentSimulation"
+  data() {
+    return {
+      titulo: "",
+      valor_total: null,
+      qtd_parcelas: null,
+      juros: null,
+      parcelasSimuladas: []
+    }
+  },
+  methods: {
+    simular() {
+
+      let _simul = {
+
+      };
+
+      this.$http
+        .post("http://localhost:5000/", _simul)
+        .then(async simulacao => {
+          this.parcelasSimuladas.push(await simulacao.json());
+          
+        });
+    }
+  }
 };
 </script>
 
