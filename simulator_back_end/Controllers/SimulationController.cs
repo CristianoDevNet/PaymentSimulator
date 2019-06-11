@@ -54,7 +54,7 @@ namespace simulator_back_end.Controllers
 
                 if(await _repo.SaveChangesAsync()){
 
-                    return Ok();
+                    return Ok("Adicionado");
                 }
             }
             catch (System.Exception)

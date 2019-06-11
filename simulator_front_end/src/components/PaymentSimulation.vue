@@ -92,7 +92,10 @@ export default {
     simular() {
 
       let _simul = {
-
+        UsuarioId: 1,
+        Titulo: this.titulo,
+        Juros: this.juros,
+        Data: "10/10/2018"
       };
 
       this.$http
