@@ -93,6 +93,8 @@ export default {
   methods: {
     simular() {
 
+      //IMPLEMENTAR CÁLCULO DAS PARCELAS
+
       let _simul = {
         Title: this.titulo,
         Valor: this.valor_total,
@@ -100,13 +102,12 @@ export default {
         Juros: this.juros
       };
 
-      console.log(_simul);
-
       this.$http
         .post("http://localhost:5000/api/Simulation/simulate", _simul)
         .then(async simulacao => {
+          
           //this.parcelasSimuladas.push(await simulacao.json());
-          //console.log(await simulacao.json());
+          
         });
     }
   }
