@@ -14,13 +14,13 @@
           <b-container>
             <hr>
             <p>
-              <input type="text" placeholder="Título" class="form-control" v-model="titulo">
+              <input type="text" placeholder="Título" class="form-control" v-model="Title">
             </p>
             <p>
-              <input type="text" placeholder="Valor Total" class="form-control" v-model="valor_total">
+              <input type="text" placeholder="Valor Total" class="form-control" v-model="Value">
             </p>
             <p>
-              <input type="text" placeholder="Qtd. Parcelas" class="form-control" v-model="qtd_parcelas">
+              <input type="text" placeholder="Qtd. Parcelas" class="form-control" v-model="QtdParcelas">
             </p>
             <p>
               <input type="text" placeholder="Juros" class="form-control" v-model="juros">
@@ -92,14 +92,14 @@ export default {
     simular() {
 
       let _simul = {
-        UsuarioId: 1,
-        Titulo: this.titulo,
-        Juros: this.juros,
-        Data: "10/10/2018"
+        Title: this.titulo,
+        Valor: this.valor_total,
+        QtdParcelas: this.qtd_parcelas,
+        Juros: this.juros
       };
 
       this.$http
-        .post("http://localhost:5000/", _simul)
+        .post("http://localhost:5000/api/Simulation/simulate", _simul)
         .then(async simulacao => {
           this.parcelasSimuladas.push(await simulacao.json());
           

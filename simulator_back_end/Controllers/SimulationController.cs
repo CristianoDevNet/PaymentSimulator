@@ -32,11 +32,11 @@ namespace simulator_back_end.Controllers
         }
 
         [HttpPost("simulate/")]
-        public IActionResult Post([FromBody] string value)
+        public IActionResult Post(Simulado simul)
         {
             try
             {
-                return Ok("ok simulate...");
+                return Ok($"ok simulate...");
             }
             catch (System.Exception)
             {
