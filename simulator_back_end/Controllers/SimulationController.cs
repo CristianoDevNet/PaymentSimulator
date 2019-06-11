@@ -36,7 +36,7 @@ namespace simulator_back_end.Controllers
         {
             try
             {
-                return Ok($"ok simulate...");
+                return Ok("ok simulate...");
             }
             catch (System.Exception)
             {
