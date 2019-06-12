@@ -14,18 +14,14 @@
           <b-container>
             <hr>
             <p>
-              <input 
-                type="text" 
-                placeholder="Título" 
-                class="form-control" 
-                v-model="titulo">
+              <input type="text" placeholder="Título" class="form-control" v-model="titulo">
             </p>
             <p>
               <input
                 type="text"
-                placeholder="Valor Total"
+                placeholder="Valor da Compra"
                 class="form-control"
-                v-model="valor_total"
+                v-model="valor_da_compra"
               >
             </p>
             <p>
@@ -78,7 +74,11 @@
               <!---->
             </tbody>
           </table>
-          <button v-if="parcelasSimuladas.length > 0" class="btn btn-success btn-sm">Salvar</button>
+          <button
+            @click="salvarSimulacao()"
+            v-if="parcelasSimuladas.length > 0"
+            class="btn btn-success btn-sm"
+          >Salvar Simulação</button>
         </b-row>
       </b-col>
     </b-row>
@@ -92,7 +92,7 @@ export default {
   data() {
     return {
       titulo: "",
-      valor_total: null,
+      valor_da_compra: null,
       qtd_parcelas: null,
       juros: null,
       data_da_compra: null,
@@ -102,7 +102,7 @@ export default {
   methods: {
     simular() {
       let _simul = {
-        ValorDaCompra: this.valor_total,
+        ValorDaCompra: this.valor_da_compra,
         QuantidadeDeParcelas: this.qtd_parcelas,
         Juros: this.juros,
         DataDaCompra: this.data_da_compra
@@ -115,7 +115,26 @@ export default {
         );
     },
     salvarSimulacao() {
+      let simulacaoParaSalvar = {
+        UsuarioId: 1, //alterar depois para dinâmico
+        Titulo: this.titulo,
+        ValorDaCompra: this.valor_da_compra,
+        QuantidadeDeParcelas: this.qtd_parcelas,
+        Juros: this.juros,
+        DataDaCompra: this.data_da_compra
+      };
 
+      this.$http
+        .post("http://localhost:5000/api/Simulation/save", simulacaoParaSalvar)
+        .then(resp => this.limparCampos());
+    },
+    limparCampos() {
+      this.titulo = "";
+      this.valor_da_compra = null;
+      this.qtd_parcelas = null;
+      this.juros = null;
+      this.data_da_compra = null;
+      this.parcelasSimuladas = [];
     }
   }
 };

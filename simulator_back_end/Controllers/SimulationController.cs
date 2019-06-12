@@ -65,6 +65,7 @@ namespace simulator_back_end.Controllers
         public async Task<IActionResult> SavePost(Simulacao simulation)
         {
             /*
+                TODO: implementar o método salvar simulação
                 TODO: Implementar o método generateSimulation que irá gerar a simulação
                 TODO: Refatorar o método Get
              */
@@ -74,7 +75,7 @@ namespace simulator_back_end.Controllers
 
                 if(await _repo.SaveChangesAsync()){
 
-                    return Ok(simulation);
+                    return Ok("Simulação salva com sucesso!");
                 }
             }
             catch (System.Exception)
