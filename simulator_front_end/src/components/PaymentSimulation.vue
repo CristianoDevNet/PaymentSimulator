@@ -102,8 +102,8 @@ export default {
   methods: {
     simular() {
       let _simul = {
-        Valor: this.valor_total,
-        QtdParcelas: this.qtd_parcelas,
+        ValorDaCompra: this.valor_total,
+        QuantidadeDeParcelas: this.qtd_parcelas,
         Juros: this.juros,
         DataDaCompra: this.data_da_compra
       };
@@ -115,7 +115,7 @@ export default {
         );
     },
     salvarSimulacao() {
-      
+
     }
   }
 };

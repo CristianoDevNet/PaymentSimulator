@@ -35,13 +35,13 @@ namespace simulator_back_end.Data
             return (await _context.SaveChangesAsync() > 0);
         }        
 
-        public async Task<SimDet[]> GetSimulationByIdAsync(int simId)
+        public async Task<Simulacao> GetSimulationByIdAsync(int simId)
         {
-            IQueryable<SimDet> query = _context.SimDets;
+            IQueryable<Simulacao> query = _context.Simulacoes;
 
             query = query.AsNoTracking();
 
-            return await query.Where(s => s.SimCabId == simId).ToArrayAsync();
+            return await query.Where(s => s.Id == simId).FirstOrDefaultAsync();            
         }
 
         public async Task<Usuario> GetUserAsync(string email, string pass)

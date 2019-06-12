@@ -34,21 +34,21 @@ namespace simulator_back_end.Controllers
         }
 
         [HttpPost("simulate/")]
-        public IActionResult Post(Simulado simul)
+        public IActionResult Post(Simulacao novaSimulacao)
         {
             try
             {
                 List<Parcela> parcelas = new List<Parcela>();
                 
-                decimal valorDaParcelaSemJuros = simul.Valor / simul.QtdParcelas;
+                decimal valorDaParcelaSemJuros = novaSimulacao.ValorDaCompra / novaSimulacao.QuantidadeDeParcelas;
 
-                decimal valorDaParcelaComJuros = valorDaParcelaSemJuros * (1 + ((Math.Round(simul.Juros, 4) / 100)));
+                decimal valorDaParcelaComJuros = valorDaParcelaSemJuros * (1 + ((Math.Round(novaSimulacao.Juros, 4) / 100)));
                 
-                for (int i = 1; i <= simul.QtdParcelas; i++)
+                for (int i = 1; i <= novaSimulacao.QuantidadeDeParcelas; i++)
                 {
                     parcelas.Add(new Parcela{
                         NumeroDaParcela = i,
-                        Vencimento = simul.DataDaCompra.AddMonths(i).ToShortDateString(),
+                        Vencimento = novaSimulacao.DataDaCompra.AddMonths(i).ToShortDateString(),
                         Valor = Math.Round(valorDaParcelaComJuros, 2)
                     });
                 }
@@ -61,8 +61,8 @@ namespace simulator_back_end.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post(SimCab simulation)
+        [HttpPost("save/")]
+        public async Task<IActionResult> SavePost(Simulacao simulation)
         {
             /*
                 TODO: Remover a tabela SimDet pois a simulação será gerada em runtime a partir do cabeçalho

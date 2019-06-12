@@ -15,7 +15,7 @@ namespace simulator_back_end.Data
 
          Task<Usuario> GetUserAsync(string email, string pass);
 
-         Task<SimDet[]> GetSimulationByIdAsync(int simId);
+         Task<Simulacao> GetSimulationByIdAsync(int simId);
 
         //GetAllSimulationsAsync
 

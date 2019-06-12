@@ -1,6 +1,8 @@
+using System;
+
 namespace simulator_back_end.Models
 {
-    public class SimCab
+    public class Simulacao
     {
         public int Id { get; set; }
 
@@ -10,7 +12,11 @@ namespace simulator_back_end.Models
 
         public decimal Juros { get; set; }
 
-        public string Data { get; set; }
+        public DateTime DataDaCompra { get; set; }
+
+        public decimal ValorDaCompra { get; set; }
+
+        public int QuantidadeDeParcelas { get; set; }
 
         public Usuario Usuario { get; set; }
     }

@@ -11,9 +11,7 @@ namespace simulator_back_end.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
 
-        public DbSet<SimCab> SimCabs { get; set; }
-
-        public DbSet<SimDet> SimDets { get; set; }
+        public DbSet<Simulacao> Simulacoes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,23 +25,15 @@ namespace simulator_back_end.Data
                 }
             );
 
-            builder.Entity<SimCab>().HasData(
-                new List<SimCab>() {
-                    new SimCab{
+            builder.Entity<Simulacao>().HasData(
+                new List<Simulacao>() {
+                    new Simulacao{
                         Id = 1,
                         UsuarioId = 1,
                         Titulo ="Fiat Uno Vivace",
                         Juros = 4.12m,
-                        Data = DateTime.Now.ToShortDateString()
+                        DataDaCompra = DateTime.Now
                     }
-                }
-            );
-
-            builder.Entity<SimDet>().HasData(
-                new List<SimDet>() {
-                    new SimDet{Id = 1, SimCabId = 1,   Parcela = 1,  Valor = 8234.12m, Vencimento = DateTime.Now.AddMonths(1) },
-                    new SimDet{Id = 2, SimCabId = 1,   Parcela = 2,  Valor = 8234.12m, Vencimento = DateTime.Now.AddMonths(2) },
-                    new SimDet{Id = 3, SimCabId = 1,   Parcela = 3,  Valor = 8234.12m, Vencimento = DateTime.Now.AddMonths(3) }
                 }
             );
         }
