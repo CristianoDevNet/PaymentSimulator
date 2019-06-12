@@ -61,10 +61,14 @@ namespace simulator_back_end.Controllers
             }
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Post(SimCab simulation)
         {
+            /*
+                TODO: Remover a tabela SimDet pois a simulação será gerada em runtime a partir do cabeçalho
+                TODO: Implementar o método generateSimulation que irá gerar a simulação
+                TODO: Refatorar o método Get
+             */
             try
             {
                 _repo.Add(simulation);

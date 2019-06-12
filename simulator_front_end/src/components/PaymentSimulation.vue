@@ -14,7 +14,11 @@
           <b-container>
             <hr>
             <p>
-              <input type="text" placeholder="Título" class="form-control" v-model="titulo">
+              <input 
+                type="text" 
+                placeholder="Título" 
+                class="form-control" 
+                v-model="titulo">
             </p>
             <p>
               <input
@@ -109,6 +113,9 @@ export default {
         .then(
           async simulacao => (this.parcelasSimuladas = await simulacao.json())
         );
+    },
+    salvarSimulacao() {
+      
     }
   }
 };
