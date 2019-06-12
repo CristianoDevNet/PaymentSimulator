@@ -40,7 +40,7 @@
                 type="text"
                 placeholder="Data da compra"
                 class="form-control"
-                v-model="vencimento_da_primeira_parcela"
+                v-model="data_da_compra"
               >
             </p>
             <p>
@@ -74,6 +74,7 @@
               <!---->
             </tbody>
           </table>
+          <button v-if="parcelasSimuladas.length > 0" class="btn btn-success btn-sm">Salvar</button>
         </b-row>
       </b-col>
     </b-row>
@@ -96,8 +97,6 @@ export default {
   },
   methods: {
     simular() {
-      //IMPLEMENTAR CÁLCULO DAS PARCELAS
-
       let _simul = {
         Valor: this.valor_total,
         QtdParcelas: this.qtd_parcelas,
@@ -106,8 +105,10 @@ export default {
       };
 
       this.$http
-        .post("http://localhost:5000/api/Simulation/simulate", _simul)        
-        .then(async simulacao => this.parcelasSimuladas = await simulacao.json());
+        .post("http://localhost:5000/api/Simulation/simulate", _simul)
+        .then(
+          async simulacao => (this.parcelasSimuladas = await simulacao.json())
+        );
     }
   }
 };
