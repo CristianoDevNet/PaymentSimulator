@@ -32,7 +32,9 @@ namespace simulator_back_end.Data
                         UsuarioId = 1,
                         Titulo ="Fiat Uno Vivace",
                         Juros = 4.12m,
-                        DataDaCompra = DateTime.Now
+                        DataDaCompra = DateTime.Now,
+                        QuantidadeDeParcelas = 4,
+                        ValorDaCompra = 25694.23m
                     }
                 }
             );

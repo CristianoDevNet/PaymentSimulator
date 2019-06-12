@@ -18,12 +18,12 @@ namespace simulator_back_end.Controllers
             _repo = repo;
         }
 
-        [HttpGet("{simulationId}")]
-        public async Task<IActionResult> Get(int simulationId)
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> Get(int userId)
         {
             try
             {
-                var result = await _repo.GetSimulationByIdAsync(simulationId);
+                var result = await _repo.GetSimulationsByUserIdAsync(userId);
 
                 return Ok(result);
             }
@@ -65,7 +65,6 @@ namespace simulator_back_end.Controllers
         public async Task<IActionResult> SavePost(Simulacao simulation)
         {
             /*
-                TODO: Remover a tabela SimDet pois a simulação será gerada em runtime a partir do cabeçalho
                 TODO: Implementar o método generateSimulation que irá gerar a simulação
                 TODO: Refatorar o método Get
              */
