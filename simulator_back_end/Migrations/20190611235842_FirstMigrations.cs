@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace simulator_back_end.Migrations
 {
@@ -50,7 +51,8 @@ namespace simulator_back_end.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     SimCabId = table.Column<int>(nullable: false),
                     Parcela = table.Column<int>(nullable: false),
-                    Valor = table.Column<decimal>(nullable: false)
+                    Valor = table.Column<decimal>(nullable: false),
+                    Vencimento = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,22 +73,22 @@ namespace simulator_back_end.Migrations
             migrationBuilder.InsertData(
                 table: "SimCabs",
                 columns: new[] { "Id", "Data", "Juros", "Titulo", "UsuarioId" },
-                values: new object[] { 1, "10/06/2019", 4.12m, "Fiat Uno Vivace", 1 });
+                values: new object[] { 1, "11/06/2019", 4.12m, "Fiat Uno Vivace", 1 });
 
             migrationBuilder.InsertData(
                 table: "SimDets",
-                columns: new[] { "Id", "Parcela", "SimCabId", "Valor" },
-                values: new object[] { 1, 1, 1, 8234.12m });
+                columns: new[] { "Id", "Parcela", "SimCabId", "Valor", "Vencimento" },
+                values: new object[] { 1, 1, 1, 8234.12m, new DateTime(2019, 7, 11, 20, 58, 42, 667, DateTimeKind.Local).AddTicks(3447) });
 
             migrationBuilder.InsertData(
                 table: "SimDets",
-                columns: new[] { "Id", "Parcela", "SimCabId", "Valor" },
-                values: new object[] { 2, 2, 1, 8234.12m });
+                columns: new[] { "Id", "Parcela", "SimCabId", "Valor", "Vencimento" },
+                values: new object[] { 2, 2, 1, 8234.12m, new DateTime(2019, 8, 11, 20, 58, 42, 667, DateTimeKind.Local).AddTicks(3758) });
 
             migrationBuilder.InsertData(
                 table: "SimDets",
-                columns: new[] { "Id", "Parcela", "SimCabId", "Valor" },
-                values: new object[] { 3, 3, 1, 8234.12m });
+                columns: new[] { "Id", "Parcela", "SimCabId", "Valor", "Vencimento" },
+                values: new object[] { 3, 3, 1, 8234.12m, new DateTime(2019, 9, 11, 20, 58, 42, 667, DateTimeKind.Local).AddTicks(3765) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_SimCabs_UsuarioId",

@@ -41,9 +41,9 @@ namespace simulator_back_end.Data
 
             builder.Entity<SimDet>().HasData(
                 new List<SimDet>() {
-                    new SimDet{Id = 1, SimCabId = 1,   Parcela = 1,  Valor = 8234.12m },
-                    new SimDet{Id = 2, SimCabId = 1,   Parcela = 2,  Valor = 8234.12m },
-                    new SimDet{Id = 3, SimCabId = 1,   Parcela = 3,  Valor = 8234.12m }
+                    new SimDet{Id = 1, SimCabId = 1,   Parcela = 1,  Valor = 8234.12m, Vencimento = DateTime.Now.AddMonths(1) },
+                    new SimDet{Id = 2, SimCabId = 1,   Parcela = 2,  Valor = 8234.12m, Vencimento = DateTime.Now.AddMonths(2) },
+                    new SimDet{Id = 3, SimCabId = 1,   Parcela = 3,  Valor = 8234.12m, Vencimento = DateTime.Now.AddMonths(3) }
                 }
             );
         }

@@ -1,3 +1,5 @@
+using System;
+
 namespace simulator_back_end.Models
 {
     public class SimDet
@@ -9,6 +11,8 @@ namespace simulator_back_end.Models
         public int Parcela { get; set; }
 
         public decimal Valor { get; set; }
+
+        public DateTime Vencimento { get; set; }
 
         public SimCab SimCab { get; set; }
     }

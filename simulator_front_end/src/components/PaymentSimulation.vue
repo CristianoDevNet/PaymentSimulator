@@ -17,13 +17,31 @@
               <input type="text" placeholder="Título" class="form-control" v-model="titulo">
             </p>
             <p>
-              <input type="text" placeholder="Valor Total" class="form-control" v-model="valor_total">
+              <input
+                type="text"
+                placeholder="Valor Total"
+                class="form-control"
+                v-model="valor_total"
+              >
             </p>
             <p>
-              <input type="text" placeholder="Qtd. Parcelas" class="form-control" v-model="qtd_parcelas">
+              <input
+                type="text"
+                placeholder="Qtd. Parcelas"
+                class="form-control"
+                v-model="qtd_parcelas"
+              >
             </p>
             <p>
-              <input type="text" placeholder="Juros" class="form-control" v-model="juros">
+              <input type="text" placeholder="Juros %" class="form-control" v-model="juros">
+            </p>
+            <p>
+              <input
+                type="text"
+                placeholder="Data da compra"
+                class="form-control"
+                v-model="vencimento_da_primeira_parcela"
+              >
             </p>
             <p>
               <button @click="simular()" class="btn btn-primary">Simular</button>
@@ -39,33 +57,18 @@
             <thead role="rowgroup" class>
               <!---->
               <tr role="row">
-                <th role="columnheader" scope="col" aria-colindex="1" class>First Name</th>
-                <th role="columnheader" scope="col" aria-colindex="2" class>Last Name</th>
-                <th role="columnheader" scope="col" aria-colindex="3" class>Age</th>
+                <th role="columnheader" scope="col" aria-colindex="1" class>Parcela</th>
+                <th role="columnheader" scope="col" aria-colindex="2" class>Valor</th>
+                <th role="columnheader" scope="col" aria-colindex="3" class>Vencimento</th>
               </tr>
             </thead>
             <!---->
             <tbody role="rowgroup" class>
               <!---->
-              <tr role="row" class>
-                <td role="cell" aria-colindex="1" class>Dickerson</td>
-                <td role="cell" aria-colindex="2" class>MacDonald</td>
-                <td role="cell" aria-colindex="3" class>40</td>
-              </tr>
-              <tr role="row" class>
-                <td role="cell" aria-colindex="1" class>Larsen</td>
-                <td role="cell" aria-colindex="2" class>Shaw</td>
-                <td role="cell" aria-colindex="3" class>21</td>
-              </tr>
-              <tr role="row" class>
-                <td role="cell" aria-colindex="1" class>Geneva</td>
-                <td role="cell" aria-colindex="2" class>Wilson</td>
-                <td role="cell" aria-colindex="3" class>89</td>
-              </tr>
-              <tr role="row" class>
-                <td role="cell" aria-colindex="1" class>Jami</td>
-                <td role="cell" aria-colindex="2" class>Carney</td>
-                <td role="cell" aria-colindex="3" class>38</td>
+              <tr v-for="(parcela, index) in parcelasSimuladas" :key="index">
+                <td>{{parcela.numeroDaParcela}}</td>
+                <td>{{parcela.valor}}</td>
+                <td>{{parcela.vencimento}}</td>
               </tr>
               <!---->
               <!---->
@@ -87,28 +90,24 @@ export default {
       valor_total: null,
       qtd_parcelas: null,
       juros: null,
+      vencimento_da_primeira_parcela: null,
       parcelasSimuladas: []
-    }
+    };
   },
   methods: {
     simular() {
-
       //IMPLEMENTAR CÁLCULO DAS PARCELAS
 
       let _simul = {
-        Title: this.titulo,
         Valor: this.valor_total,
         QtdParcelas: this.qtd_parcelas,
-        Juros: this.juros
+        Juros: this.juros,
+        VencimentoDaPrimeiraParcela: this.vencimento_da_primeira_parcela
       };
 
       this.$http
-        .post("http://localhost:5000/api/Simulation/simulate", _simul)
-        .then(async simulacao => {
-          
-          //this.parcelasSimuladas.push(await simulacao.json());
-          
-        });
+        .post("http://localhost:5000/api/Simulation/simulate", _simul)        
+        .then(async simulacao => this.parcelasSimuladas = await simulacao.json());
     }
   }
 };

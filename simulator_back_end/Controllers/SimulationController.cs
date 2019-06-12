@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -36,7 +38,26 @@ namespace simulator_back_end.Controllers
         {
             try
             {
-                return Ok("ok simulate...");
+                List<Parcela> parcelas = new List<Parcela>();
+                
+                DateTime vencimentoDaPrimeiraParcela = Convert.ToDateTime(simul.VencimentoDaPrimeiraParcela);
+
+                decimal valorDaParcelaSemJuros = simul.Valor / simul.QtdParcelas;
+
+                decimal valorDaParcelaComJuros = valorDaParcelaSemJuros + ((simul.Juros / 100) * valorDaParcelaSemJuros);
+
+                for (int i = 0; i < simul.QtdParcelas; i++)
+                {
+                    parcelas.Add(new Parcela{
+
+                        NumeroDaParcela = i + 1,
+                        Vencimento = i == 0 ? vencimentoDaPrimeiraParcela.ToShortDateString() : vencimentoDaPrimeiraParcela.AddMonths(i).ToShortDateString(),
+                        Valor = valorDaParcelaComJuros.ToString("0.00")
+                    });
+                }
+
+                return Ok(parcelas);
+                //return Ok(JsonConvert.SerializeObject(parcelas));
             }
             catch (System.Exception)
             {
@@ -54,7 +75,7 @@ namespace simulator_back_end.Controllers
 
                 if(await _repo.SaveChangesAsync()){
 
-                    return Ok("Adicionado");
+                    return Ok(simulation);
                 }
             }
             catch (System.Exception)
