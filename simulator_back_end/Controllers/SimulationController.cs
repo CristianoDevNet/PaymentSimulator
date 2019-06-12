@@ -40,24 +40,20 @@ namespace simulator_back_end.Controllers
             {
                 List<Parcela> parcelas = new List<Parcela>();
                 
-                DateTime vencimentoDaPrimeiraParcela = Convert.ToDateTime(simul.VencimentoDaPrimeiraParcela);
-
                 decimal valorDaParcelaSemJuros = simul.Valor / simul.QtdParcelas;
 
-                decimal valorDaParcelaComJuros = valorDaParcelaSemJuros + ((Math.Round(simul.Juros, 4) / 100) * valorDaParcelaSemJuros);
-
-                for (int i = 0; i < simul.QtdParcelas; i++)
+                decimal valorDaParcelaComJuros = valorDaParcelaSemJuros * (1 + ((Math.Round(simul.Juros, 4) / 100)));
+                
+                for (int i = 1; i <= simul.QtdParcelas; i++)
                 {
                     parcelas.Add(new Parcela{
-
-                        NumeroDaParcela = i + 1,
-                        Vencimento = i == 0 ? vencimentoDaPrimeiraParcela.ToShortDateString() : vencimentoDaPrimeiraParcela.AddMonths(i).ToShortDateString(),
+                        NumeroDaParcela = i,
+                        Vencimento = simul.DataDaCompra.AddMonths(i).ToShortDateString(),
                         Valor = Math.Round(valorDaParcelaComJuros, 2)
                     });
                 }
 
                 return Ok(parcelas);
-                //return Ok(JsonConvert.SerializeObject(parcelas));
             }
             catch (System.Exception)
             {

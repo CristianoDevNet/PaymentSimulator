@@ -90,7 +90,7 @@ export default {
       valor_total: null,
       qtd_parcelas: null,
       juros: null,
-      vencimento_da_primeira_parcela: null,
+      data_da_compra: null,
       parcelasSimuladas: []
     };
   },
@@ -102,7 +102,7 @@ export default {
         Valor: this.valor_total,
         QtdParcelas: this.qtd_parcelas,
         Juros: this.juros,
-        VencimentoDaPrimeiraParcela: this.vencimento_da_primeira_parcela
+        DataDaCompra: this.data_da_compra
       };
 
       this.$http

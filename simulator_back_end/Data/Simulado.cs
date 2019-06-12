@@ -10,6 +10,6 @@ namespace simulator_back_end.Data
 
         public decimal Juros { get; set; }
 
-        public DateTime VencimentoDaPrimeiraParcela { get; set; }
+        public DateTime DataDaCompra { get; set; }
     }
 }
