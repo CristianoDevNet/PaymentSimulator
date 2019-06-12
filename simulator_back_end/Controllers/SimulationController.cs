@@ -44,7 +44,7 @@ namespace simulator_back_end.Controllers
 
                 decimal valorDaParcelaSemJuros = simul.Valor / simul.QtdParcelas;
 
-                decimal valorDaParcelaComJuros = valorDaParcelaSemJuros + ((simul.Juros / 100) * valorDaParcelaSemJuros);
+                decimal valorDaParcelaComJuros = valorDaParcelaSemJuros + ((Math.Round(simul.Juros, 4) / 100) * valorDaParcelaSemJuros);
 
                 for (int i = 0; i < simul.QtdParcelas; i++)
                 {
@@ -52,7 +52,7 @@ namespace simulator_back_end.Controllers
 
                         NumeroDaParcela = i + 1,
                         Vencimento = i == 0 ? vencimentoDaPrimeiraParcela.ToShortDateString() : vencimentoDaPrimeiraParcela.AddMonths(i).ToShortDateString(),
-                        Valor = valorDaParcelaComJuros.ToString("0.00")
+                        Valor = Math.Round(valorDaParcelaComJuros, 2)
                     });
                 }
 

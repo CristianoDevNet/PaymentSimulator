@@ -6,7 +6,7 @@ namespace simulator_back_end.Data
     {
         public int NumeroDaParcela { get; set; }
 
-        public string Valor { get; set; }
+        public decimal Valor { get; set; }
 
         public string Vencimento { get; set; }
     }
