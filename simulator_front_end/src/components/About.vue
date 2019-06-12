@@ -14,10 +14,9 @@
           <b-container>
             <hr>
             <p class="lead">"Apesar de terem me ferido gravemente</p>
-              <p class="lead">Em meio ao medo e ao pânico</p>
-              <p class="lead">Vocês não me desertaram</p>
-              <p class="lead">Meus companheiros de batalha"</p>
-            </p>
+            <p class="lead">Em meio ao medo e ao pânico</p>
+            <p class="lead">Vocês não me desertaram</p>
+            <p class="lead">Meus companheiros de batalha"</p>
           </b-container>
         </b-row>
       </b-col>

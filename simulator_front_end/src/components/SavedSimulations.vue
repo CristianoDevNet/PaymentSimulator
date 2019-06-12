@@ -13,18 +13,45 @@
         <b-row>
           <b-container>
             <hr>
+            <!-- <div class="list-group" v-for="(simulacao, index) in simulacoes" :key="index">              
+              <a href="#" class="list-group-item list-group-item-action">{{simulacao.titulo}}</a>
+            </div>-->
+            <div class="list-group" v-for="(simulacao, index) in simulacoes" :key="index">
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">Em {{new Date(simulacao.dataDaCompra).toLocaleDateString("pr-BR")}}</h5>
+                  <small>{{simulacao.quantidadeDeParcelas}} parcela(s)</small>
+                </div>
+                <p class="mb-1">{{simulacao.titulo}}</p>
+              </a>
+            </div>
+          </b-container>
+        </b-row>
+      </b-col>
+      <b-col col lg="5">
+        <b-row>
+          <b-container>
             
           </b-container>
         </b-row>
       </b-col>
-      <b-col col lg="5"></b-col>
     </b-row>
   </div>
 </template>
 
 <script>
 export default {
-  name: "SavedSimulation"
+  data() {
+    return {
+      userId: 1,
+      simulacoes: []
+    };
+  },
+  created() {
+    this.$http
+      .get(`http://localhost:5000/api/Simulation/${this.userId}`)
+      .then(async retorno => (this.simulacoes = await retorno.json()));
+  }
 };
 </script>
 
