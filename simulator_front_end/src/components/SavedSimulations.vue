@@ -59,7 +59,7 @@
                 <!---->
                 <tr v-for="(parcela, index) in parcelas" :key="index">
                   <td>{{parcela.numeroDaParcela}}</td>
-                  <td>{{parcela.valor}}</td>
+                  <td>{{parcela.valor.toLocaleString("pt-BR", {minimumFractionDigits: 2, maximumFractionDigits: 2})}}</td>
                   <td>{{parcela.vencimento}}</td>
                 </tr>
                 <!---->
