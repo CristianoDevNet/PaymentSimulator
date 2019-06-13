@@ -126,7 +126,10 @@ export default {
 
       this.$http
         .post("http://localhost:5000/api/Simulation/save", simulacaoParaSalvar)
-        .then(resp => this.limparCampos());
+        .then(resp => {
+          this.limparCampos();
+          this.makeToast("success");
+        });
     },
     limparCampos() {
       this.titulo = "";
@@ -135,6 +138,13 @@ export default {
       this.juros = null;
       this.data_da_compra = null;
       this.parcelasSimuladas = [];
+    },
+    makeToast(variant = null) {
+      this.$bvToast.toast("Simulação salva com sucesso!", {
+        title: 'Ok',
+        variant: variant,
+        solid: true
+      });
     }
   }
 };
