@@ -33,27 +33,32 @@ namespace simulator_back_end.Controllers
             }
         }
 
+        private List<Parcela> calcularParcelas(Simulacao simulacao){
+
+            List<Parcela> parcelas = new List<Parcela>();
+                
+                decimal valorDaParcelaSemJuros = simulacao.ValorDaCompra / simulacao.QuantidadeDeParcelas;
+
+                decimal valorDaParcelaComJuros = valorDaParcelaSemJuros * (1 + ((Math.Round(simulacao.Juros, 4) / 100)));
+                
+                for (int i = 1; i <= simulacao.QuantidadeDeParcelas; i++)
+                {
+                    parcelas.Add(new Parcela{
+                        NumeroDaParcela = i,
+                        Vencimento = simulacao.DataDaCompra.AddMonths(i).ToShortDateString(),
+                        Valor = Math.Round(valorDaParcelaComJuros, 2)
+                    });
+                }
+            
+            return parcelas;
+        }
+
         [HttpPost("simulate/")]
         public IActionResult Post(Simulacao novaSimulacao)
         {
             try
             {
-                List<Parcela> parcelas = new List<Parcela>();
-                
-                decimal valorDaParcelaSemJuros = novaSimulacao.ValorDaCompra / novaSimulacao.QuantidadeDeParcelas;
-
-                decimal valorDaParcelaComJuros = valorDaParcelaSemJuros * (1 + ((Math.Round(novaSimulacao.Juros, 4) / 100)));
-                
-                for (int i = 1; i <= novaSimulacao.QuantidadeDeParcelas; i++)
-                {
-                    parcelas.Add(new Parcela{
-                        NumeroDaParcela = i,
-                        Vencimento = novaSimulacao.DataDaCompra.AddMonths(i).ToShortDateString(),
-                        Valor = Math.Round(valorDaParcelaComJuros, 2)
-                    });
-                }
-
-                return Ok(parcelas);
+                return Ok(calcularParcelas(novaSimulacao));
             }
             catch (System.Exception)
             {
@@ -64,11 +69,10 @@ namespace simulator_back_end.Controllers
         [HttpPost("save/")]
         public async Task<IActionResult> SavePost(Simulacao simulation)
         {
-            /*
-                TODO: implementar o método salvar simulação
-                TODO: Implementar o método generateSimulation que irá gerar a simulação
-                TODO: Refatorar o método Get
-             */
+            simulation.ValorDaCompra = Math.Round(simulation.ValorDaCompra, 2);
+            
+            simulation.Juros = Math.Round(simulation.Juros, 4);
+
             try
             {
                 _repo.Add(simulation);
