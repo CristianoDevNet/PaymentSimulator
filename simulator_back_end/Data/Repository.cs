@@ -35,7 +35,7 @@ namespace simulator_back_end.Data
             return (await _context.SaveChangesAsync() > 0);
         }        
 
-        public async Task<Simulacao[]> GetSimulationsByUserIdAsync(int userId)
+        public async Task<object[]> GetSimulationsByUserIdAsync(int userId)
         {
             IQueryable<Simulacao> query = _context.Simulacoes;
 
@@ -44,7 +44,7 @@ namespace simulator_back_end.Data
             return await query.Where(s => s.UsuarioId == userId).ToArrayAsync();            
         }
 
-        public async Task<Usuario> GetUserAsync(string email, string pass)
+        public async Task<object> GetUserAsync(string email, string pass)
         {
             IQueryable<Usuario> query = _context.Usuarios;
 
@@ -53,13 +53,13 @@ namespace simulator_back_end.Data
             return await query.Where(u => u.Email == email && u.Senha == pass).FirstOrDefaultAsync();
         }
 
-        public async Task<Simulacao> GetSimulationByIdAsync(int simId)
+        public async Task<object> GetSimulationByIdAsync(int simId)
         {
             IQueryable<Simulacao> query = _context.Simulacoes;
 
             query = query.AsNoTracking();
 
             return await query.FirstOrDefaultAsync(s => s.Id == simId);
-        }
+        }        
     }
 }

@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using simulator_back_end.Models;
 
 namespace simulator_back_end.Data
 {
@@ -13,11 +12,11 @@ namespace simulator_back_end.Data
 
          Task<bool> SaveChangesAsync();
 
-         Task<Usuario> GetUserAsync(string email, string pass);
+         Task<object> GetUserAsync(string email, string pass);
 
-         Task<Simulacao[]> GetSimulationsByUserIdAsync(int simId);
+         Task<object[]> GetSimulationsByUserIdAsync(int simId);
 
-         Task<Simulacao> GetSimulationByIdAsync(int simId);
+         Task<object> GetSimulationByIdAsync(int simId);
 
         //GetAllSimulationsAsync
 
